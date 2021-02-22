@@ -5,7 +5,7 @@ class UpdatesController < ApplicationController
 
   def index
     @all_updates = get_updates
-    @filtered_updates = @all_updates.select{|update| includes_keyword?(update)}
+    @filtered_updates = @all_updates.select{|update| includes_keyword?(update)}.sort_by{|update| update["sentiment"]}
   end
 
   def get_updates
