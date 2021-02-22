@@ -16,6 +16,9 @@ class UpdatesController < ApplicationController
     @percentage = (@count.to_f/@all_updates.length)*100
   end
 
+  def show
+  end
+
   # This method is for retrieving all updates from API
   def get_updates
     url = "https://raw.githubusercontent.com/Vericatch/devtestapiapp/master/mock_response.json"
