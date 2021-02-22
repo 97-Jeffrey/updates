@@ -8,7 +8,7 @@ class UpdatesController < ApplicationController
     @filtered_updates = @all_updates.select{|update| includes_keyword?(update)}.sort_by{|update| update["sentiment"]}
 
     @count = count(@filtered_updates)
-    
+    @percentage = (@count.to_f/@all_updates.length)*100
   end
 
   def get_updates
