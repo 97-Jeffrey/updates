@@ -1,10 +1,13 @@
 <h2>All the updates with keywords "coke", "coca-cola", and "diet-coke":</h2>
 
+<h3>The percentage of updates with keywords is <%= @percentage %> %.</h3>
 
 <% @filtered_updates.each do |update|%>
 
+<div style="margin:20px;">
   <div><%= update["user_handle"]%></div>
-  <div><%= update["message"]%></div>
+  <div>updated:"<%= update["message"]%>"</div>
   <div><%= update["sentiment"]%></div>
+</div>
 
 <% end %>
