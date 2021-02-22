@@ -2,7 +2,7 @@
 
 <h3>The percentage of updates with keywords is <%= @percentage %> %.</h3>
 
-<% @filtered_updates.each do |update|%>
+<% @sorted_updates.each do |update|%>
 
 <div style="margin:20px;">
   <div><%= update["user_handle"]%></div>

@@ -3,10 +3,14 @@ require "json"
 
 class UpdatesController < ApplicationController
 
-  # All logics of sorting, filtering, and counting are implemented by controllers' methods, then passed in as variables for index page to render, so index.html.erb is just for render html and variables.
+  # All logics of sorting, filtering, and counting are implemented by controllers' methods, then passed in as variables for index page to render, so index.html.erb is just for render html and ruby variables.
+  
+  #Also, index actions knows nothing about logics, it just care about returned variables from methods, if tomorrow we want to change keywords or orders of displayed updates, we just make changes in methods that implement the logics.
+  
   def index
     @all_updates = get_updates
-    @filtered_updates = @all_updates.select{|update| includes_keyword?(update)}.sort_by{|update| update["sentiment"]}
+    @filtered_updates = @all_updates.select{|update| includes_keyword?(update)}
+    @sorted_updates = sort_update(@filtered_updates)
 
     @count = count(@all_updates)
     @percentage = (@count.to_f/@all_updates.length)*100
@@ -27,6 +31,11 @@ class UpdatesController < ApplicationController
       end
     end
     keyword_count
+  end
+
+  # sort each update from minimum sentiment to maximum sentiment:
+  def sort_update(updates)
+    updates.sort_by{|update| update["sentiment"]}
   end
 
   # filtering conditional:
