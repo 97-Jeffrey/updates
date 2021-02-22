@@ -1,12 +1,13 @@
 <h1>All the updates with keywords:</h1>
 
 
-<% @updates.each do |update|%>
+<% @updates.sort_by{|update| update["sentiment"]}.each do |update|%>
 
 <% if update["message"].include? "coke"  or  update["message"].include? "coca-cola" or update["message"].include? "diet-cola"%>
 
   <div><%= update["user_handle"]%></div>
   <div><%= update["message"]%></div>
+  <div><%= update["sentiment"]%></div>
 <% end%>
 
 <% end %>
