@@ -6,7 +6,7 @@
 
 <div style="margin:20px;">
   <div><%= update["user_handle"]%></div>
-  <div>updated:"<%= update["message"]%>"</div>
+  <div>updated:<%= link_to "#{update["message"]}", update_path(update["id"])%></div>
 </div>
 
 <% end %>
