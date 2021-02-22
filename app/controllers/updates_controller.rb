@@ -9,7 +9,6 @@ class UpdatesController < ApplicationController
 
   def get_updates
     url = "https://raw.githubusercontent.com/Vericatch/devtestapiapp/master/mock_response.json"
-    @response = HTTParty.get(url)
-    puts @response
+    @response = JSON.parse(HTTParty.get(url))
   end
 end
