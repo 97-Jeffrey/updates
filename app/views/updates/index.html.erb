@@ -3,7 +3,10 @@
 
 <% @updates.each do |update|%>
 
-<div><%= update["user_handle"]%></div>
-<div><%= update["message"]%></div>
+<% if update["message"].include? "coke"  or  update["message"].include? "coca-cola" or update["message"].include? "diet-cola"%>
+
+  <div><%= update["user_handle"]%></div>
+  <div><%= update["message"]%></div>
+<% end%>
 
 <% end %>
