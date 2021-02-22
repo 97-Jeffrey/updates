@@ -4,7 +4,7 @@ require "json"
 class UpdatesController < ApplicationController
 
   def index
-    get_updates
+    @updates = get_updates
   end
 
   def get_updates
