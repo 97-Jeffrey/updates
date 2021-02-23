@@ -1,11 +1,10 @@
 require "httparty"
-require "json"
 
 class UpdatesController < ApplicationController
 
-  # All logics of sorting, filtering, and counting are implemented by controllers' methods, then passed in as variables for index page to render, so index.html.erb is just for render html and ruby variables.
+  # All logics of sorting, filtering, and counting are implemented by controllers' methods, then passed into index action as variables, so index.html.erb is just for render html and ruby variables.
   
-  #Also, index actions knows nothing about logics, it just care about returned variables from methods, if tomorrow we want to change keywords or orders of displayed updates, we just make changes in methods that implement the logics.
+  # So index action knows nothing about logics, it only care about returned variables from methods, if tomorrow we want to change keywords or orders of display, we just make changes in methods that implement the logics.
   
   def index
     @all_updates = get_updates
@@ -20,7 +19,8 @@ class UpdatesController < ApplicationController
     @update = get_updates.select{|update| update["id"].to_s== params[:id]}[0]
   end
 
-  # This method is for retrieving all updates from API
+  # This method is for retrieving all updates from API.
+  # httparty is ideal for fetching API, we can use class method to retrieve data quickly.
   def get_updates
     url = "https://raw.githubusercontent.com/Vericatch/devtestapiapp/master/mock_response.json"
     @response = JSON.parse(HTTParty.get(url))
