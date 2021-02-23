@@ -26,7 +26,7 @@ class UpdatesController < ApplicationController
     @response = JSON.parse(HTTParty.get(url))
   end
 
-  #  Numbers of updates with keywords:
+  # Identify numbers of updates with keywords:
   def count(updates)
     keyword_count = 0;
     updates.each do |update|
