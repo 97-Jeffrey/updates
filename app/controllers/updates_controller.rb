@@ -17,6 +17,7 @@ class UpdatesController < ApplicationController
   end
 
   def show
+    @update = get_updates.select{|update| update["id"].to_s== params[:id]}[0]
   end
 
   # This method is for retrieving all updates from API
